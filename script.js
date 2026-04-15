@@ -1,14 +1,8 @@
 const lowSensToggle = document.getElementById('lowSens');
-const toggleLabel = document.getElementById('toggleLabel');
 const generateBtn = document.getElementById('generateBtn');
 const resultDiv = document.getElementById('result');
 const sensiOutput = document.getElementById('sensiOutput');
 const copyBtn = document.getElementById('copyBtn');
-
-lowSensToggle.addEventListener('change', (e) => {
-    toggleLabel.textContent = e.target.checked ? 'Sim' : 'Não';
-    toggleLabel.style.color = e.target.checked ? '#00bfff' : '#666';
-});
 
 // Based on real pro players
 const pros = [
@@ -82,16 +76,14 @@ generateBtn.addEventListener('click', () => {
     // DPI Adaptation
     let dpiOutput;
     if (platform === 'ios') {
-        // iOS doesn't have open DPI settings, often it's simulated as Max / standard
         dpiOutput = "Máxima";
     } else {
         let dpiNum = Math.round(sensi.dpi * multiplier) + getRandomInt(-40, 60);
-        // Round DPI to nearest 10 for realism
         dpiNum = Math.round(dpiNum / 10) * 10;
         dpiOutput = dpiNum;
     }
 
-    // Adjust clamping (Free Fire limits: usually 0-200)
+    // Adjust clamping
     for (const key of ['geral', 'redDot', 'mira2x', 'mira4x']) {
         if (sensi[key] > 200) sensi[key] = 200;
         if (sensi[key] < 0) sensi[key] = 0;
@@ -100,29 +92,33 @@ generateBtn.addEventListener('click', () => {
     if(sensi.botao > 100) sensi.botao = 100;
     if(sensi.botao < 10) sensi.botao = 10;
 
-    const outputText = `Geral ${sensi.geral}\nRed Dot ${sensi.redDot}\nMira 2x ${sensi.mira2x}\nMira 4x ${sensi.mira4x}\nBotão de Tiro ${sensi.botao}%\nDpi ${dpiOutput}`;
+    // Use innerHTML so we can style the numbers nicely, but the user copies them plainly
+    const styledOutput = `Geral <span>${sensi.geral}</span>\nRed Dot <span>${sensi.redDot}</span>\nMira 2x <span>${sensi.mira2x}</span>\nMira 4x <span>${sensi.mira4x}</span>\nBotão de Tiro <span>${sensi.botao}%</span>\nDpi <span>${dpiOutput}</span>`;
 
     // Display result with slight delay for dynamic effect
     sensiOutput.style.opacity = '0.5';
     setTimeout(() => {
-        sensiOutput.textContent = outputText;
+        sensiOutput.innerHTML = styledOutput;
         sensiOutput.style.opacity = '1';
         resultDiv.classList.remove('hidden');
     }, 150);
 });
 
 copyBtn.addEventListener('click', () => {
-    const textToCopy = sensiOutput.textContent;
+    // innerText preserves the line breaks but removes the span tags
+    const textToCopy = sensiOutput.innerText;
     navigator.clipboard.writeText(textToCopy).then(() => {
         const originalText = copyBtn.textContent;
-        copyBtn.textContent = 'COPIADO!';
-        copyBtn.style.backgroundColor = '#00bfff';
-        copyBtn.style.color = '#000';
+        copyBtn.textContent = 'Copiado para a área de transferência!';
+        copyBtn.style.color = '#fff';
+        copyBtn.style.borderColor = 'rgba(255,255,255,0.3)';
+        copyBtn.style.background = 'rgba(255,255,255,0.1)';
         
         setTimeout(() => {
             copyBtn.textContent = originalText;
-            copyBtn.style.backgroundColor = '#111';
-            copyBtn.style.color = '#00bfff';
-        }, 2000);
+            copyBtn.style.color = '';
+            copyBtn.style.borderColor = '';
+            copyBtn.style.background = '';
+        }, 3000);
     });
 });
