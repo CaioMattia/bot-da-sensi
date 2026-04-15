@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bot do Capa</title>
+    <title>BOT DO CAPA</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+
+    <div class="glass-panel">
         <header>
-            <h1>Bot do Capa</h1>
-            <p>Gerador de Sensibilidade</p>
+            <h1>BOT DO CAPA</h1>
+            <p>Gerador de Sensibilidade Universal</p>
         </header>
 
         <main>
@@ -22,45 +28,48 @@
                 <div class="radio-row">
                     <input type="radio" id="plat-android" name="platform" value="android" checked>
                     <label for="plat-android" class="radio-btn">Android</label>
-                    
+
                     <input type="radio" id="plat-ios" name="platform" value="ios">
                     <label for="plat-ios" class="radio-btn">iOS</label>
-                    
+
                     <input type="radio" id="plat-emu" name="platform" value="emulador">
                     <label for="plat-emu" class="radio-btn">Emulador</label>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>Papel</label>
+                <label>Papel no Squad</label>
                 <div class="radio-row">
                     <input type="radio" id="role-rush" name="role" value="rushador" checked>
                     <label for="role-rush" class="radio-btn">Rushador</label>
-                    
+
                     <input type="radio" id="role-sup" name="role" value="suporte">
                     <label for="role-sup" class="radio-btn">Suporte</label>
-                    
+
                     <input type="radio" id="role-igl" name="role" value="igl">
                     <label for="role-igl" class="radio-btn">IGL</label>
                 </div>
             </div>
 
             <div class="form-group toggle-group">
-                <label for="lowSens">Sensibilidade baixa</label>
+                <label for="lowSens">Sensibilidade Baixa</label>
                 <div class="toggle-wrapper">
                     <label class="switch">
                         <input type="checkbox" id="lowSens">
                         <span class="slider round"></span>
                     </label>
-                    <span id="toggleLabel">Não</span>
                 </div>
             </div>
 
-            <button id="generateBtn">Gerar Sensi</button>
+            <button id="generateBtn" class="liquid-btn">
+                <span>Gerar Configuração</span>
+            </button>
 
             <div id="result" class="result hidden">
-                <div id="sensiOutput" class="output"></div>
-                <button id="copyBtn" class="copy-btn">Copiar</button>
+                <div class="result-blur">
+                    <div id="sensiOutput" class="output"></div>
+                    <button id="copyBtn" class="copy-btn">Copiar para Área de Transferência</button>
+                </div>
             </div>
         </main>
     </div>
