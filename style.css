@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-radius: 16px;
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 40px rgba(0, 191, 255, 0.05);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+header h1 {
+    color: #00bfff;
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+}
+
+header p {
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #aaa;
+    font-weight: 600;
+}
+
+.radio-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.radio-row input[type="radio"] {
+    display: none;
+}
+
+.radio-btn {
+    flex: 1;
+    text-align: center;
+    padding: 12px 5px;
+    background-color: #111;
+    color: #888;
+    border: 1px solid #222;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.radio-btn:hover {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.radio-row input[type="radio"]:checked + .radio-btn {
+    background-color: rgba(0, 191, 255, 0.1);
+    color: #00bfff;
+    border-color: #00bfff;
+}
+
+.toggle-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toggle-group label {
+    margin-bottom: 0;
+}
+
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #222;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #666;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: rgba(0, 191, 255, 0.2);
+    border: 1px solid #00bfff;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+    background-color: #00bfff;
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#toggleLabel {
+    font-weight: 600;
+    color: #666;
+    width: 35px;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
+    background-color: #00bfff;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
+}
+
+button:hover {
+    background-color: #33ccff;
+    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.result {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px dashed #222;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.result.hidden {
+    display: none;
+}
+
+.output {
+    background-color: #0a0a0a;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.8;
+    color: #fff;
+    white-space: pre-wrap;
+    border: 1px solid #222;
+    position: relative;
+}
+
+/* Decorating Output */
+.output::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 4px;
+    height: 100%;
+    background-color: #00bfff;
+    border-radius: 10px 0 0 10px;
+}
+
+.copy-btn {
+    background-color: #111;
+    color: #00bfff;
+    border: 1px solid #222;
+    padding: 12px;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    box-shadow: none;
+}
+
+.copy-btn:hover {
+    background-color: #1a1a1a;
+    border-color: #00bfff;
+    box-shadow: none;
+    transform: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

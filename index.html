@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot do Capa</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Bot do Capa</h1>
+            <p>Gerador de Sensibilidade</p>
+        </header>
+
+        <main>
+            <div class="form-group">
+                <label>Plataforma</label>
+                <div class="radio-row">
+                    <input type="radio" id="plat-android" name="platform" value="android" checked>
+                    <label for="plat-android" class="radio-btn">Android</label>
+                    
+                    <input type="radio" id="plat-ios" name="platform" value="ios">
+                    <label for="plat-ios" class="radio-btn">iOS</label>
+                    
+                    <input type="radio" id="plat-emu" name="platform" value="emulador">
+                    <label for="plat-emu" class="radio-btn">Emulador</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Papel</label>
+                <div class="radio-row">
+                    <input type="radio" id="role-rush" name="role" value="rushador" checked>
+                    <label for="role-rush" class="radio-btn">Rushador</label>
+                    
+                    <input type="radio" id="role-sup" name="role" value="suporte">
+                    <label for="role-sup" class="radio-btn">Suporte</label>
+                    
+                    <input type="radio" id="role-igl" name="role" value="igl">
+                    <label for="role-igl" class="radio-btn">IGL</label>
+                </div>
+            </div>
+
+            <div class="form-group toggle-group">
+                <label for="lowSens">Sensibilidade baixa</label>
+                <div class="toggle-wrapper">
+                    <label class="switch">
+                        <input type="checkbox" id="lowSens">
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="toggleLabel">Não</span>
+                </div>
+            </div>
+
+            <button id="generateBtn">Gerar Sensi</button>
+
+            <div id="result" class="result hidden">
+                <div id="sensiOutput" class="output"></div>
+                <button id="copyBtn" class="copy-btn">Copiar</button>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
