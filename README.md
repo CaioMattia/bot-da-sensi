@@ -1,4 +1,4 @@
-# Sensi Pro
+# Bot da Sensi
 
 Gerador de sensibilidade para Free Fire baseado em estatísticas de jogadores profissionais. 
 
