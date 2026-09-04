@@ -1,8 +1,55 @@
+// ── Matrix Rain Background ──
+const canvas = document.getElementById('matrixCanvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const matrixChars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF';
+const fontSize = 14;
+let columns = Math.floor(canvas.width / fontSize);
+let drops = Array(columns).fill(1);
+
+function drawMatrix() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#00ff41';
+    ctx.font = fontSize + 'px Share Tech Mono, monospace';
+
+    columns = Math.floor(canvas.width / fontSize);
+    while (drops.length < columns) drops.push(1);
+
+    for (let i = 0; i < columns; i++) {
+        const char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+
+        // Vary brightness randomly
+        const alpha = Math.random() * 0.5 + 0.3;
+        ctx.fillStyle = `rgba(0, 255, 65, ${alpha})`;
+        ctx.fillText(char, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+        drops[i]++;
+    }
+}
+
+setInterval(drawMatrix, 50);
+
+// ── App Logic ──
 const lowSensToggle = document.getElementById('lowSens');
 const generateBtn = document.getElementById('generateBtn');
 const resultDiv = document.getElementById('result');
 const sensiOutput = document.getElementById('sensiOutput');
 const copyBtn = document.getElementById('copyBtn');
+
 
 // Based on real pro players
 const pros = [
